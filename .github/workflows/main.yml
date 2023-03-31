@@ -8,6 +8,11 @@ on:
 
 jobs:
   deploy:
+    defaults:
+      run:
+        shell: bash
+        working-directory: server
+        
     runs-on: ubuntu-latest
     steps:
       - name: Cloning repo
@@ -20,4 +25,3 @@ jobs:
         with:
           git_remote_url: 'ssh://dokku@sbtp.xyz:22/sakuraboost'
           ssh_private_key: ${{ secrets.SSH_PRIVATE_KEY }}
-        working-directory: ./server
